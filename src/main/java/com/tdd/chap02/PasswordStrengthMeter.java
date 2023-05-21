@@ -10,6 +10,7 @@ public class PasswordStrengthMeter {
         boolean containsUpp = meetsContainingUpperCriteria(s);
 
         if (lengthEnough && !containsNum && !containsUpp) return PasswordStrength.WEAK;
+        if (!lengthEnough && containsNum && !containsUpp) return PasswordStrength.WEAK;
 
         if (!lengthEnough) return PasswordStrength.NORMAL;
         if (!containsNum) return PasswordStrength.NORMAL;
