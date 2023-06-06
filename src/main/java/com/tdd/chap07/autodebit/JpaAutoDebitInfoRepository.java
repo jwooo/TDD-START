@@ -1,4 +1,4 @@
-package com.tdd.chap07;
+package com.tdd.chap07.autodebit;
 
 public class JpaAutoDebitInfoRepository implements AutoDebitInfoRepository {
 

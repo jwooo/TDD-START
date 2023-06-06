@@ -1,6 +1,5 @@
-package com.tdd.chap07;
+package com.tdd.chap07.autodebit;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class AutoDebitRegister {

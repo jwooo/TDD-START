@@ -1,10 +1,11 @@
 package com.tdd.chap07;
 
+import com.tdd.chap07.autodebit.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static com.tdd.chap07.CardValidity.THEFT;
-import static com.tdd.chap07.CardValidity.VALID;
+import static com.tdd.chap07.autodebit.CardValidity.THEFT;
+import static com.tdd.chap07.autodebit.CardValidity.VALID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AutoDebitRegisterTest {
