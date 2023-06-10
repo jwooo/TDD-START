@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class UserRegisterTest {
     private UserRegister userRegister;
-    private StubWeakPasswordChecker stubPasswordChecker;
+    private StubWeakPasswordChecker stubPasswordChecker = new StubWeakPasswordChecker();
 
     @BeforeEach
     void setUp() {
