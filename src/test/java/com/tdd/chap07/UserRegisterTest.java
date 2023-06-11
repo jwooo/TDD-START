@@ -1,8 +1,6 @@
 package com.tdd.chap07;
 
-import com.tdd.chap07.user.StubWeakPasswordChecker;
-import com.tdd.chap07.user.UserRegister;
-import com.tdd.chap07.user.WeakPasswordException;
+import com.tdd.chap07.user.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,10 +10,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class UserRegisterTest {
     private UserRegister userRegister;
     private StubWeakPasswordChecker stubPasswordChecker = new StubWeakPasswordChecker();
+    private MemoryUserRepository fakeRepository = new MemoryUserRepository();
 
     @BeforeEach
     void setUp() {
-        userRegister = new UserRegister(stubPasswordChecker);
+        userRegister = new UserRegister(stubPasswordChecker, fakeRepository);
     }
 
     @DisplayName("약한 암호면 가입 실패")
@@ -25,6 +24,15 @@ public class UserRegisterTest {
 
         assertThrows(WeakPasswordException.class, () -> {
             userRegister.register("id", "pw", "email");
+        });
+    }
+
+    @DisplayName("이미 같은 ID가 존재하면 가입 실패")
+    @Test
+    void dupIdExists() {
+        fakeRepository.save(new User("id", "pw1", "email@email.com"));
+        assertThrows(DupIdException.class, () -> {
+            userRegister.register("id", "pw2", "email");
         });
     }
 }
