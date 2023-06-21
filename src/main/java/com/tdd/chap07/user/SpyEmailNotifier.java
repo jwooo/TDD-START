@@ -1,6 +1,6 @@
 package com.tdd.chap07.user;
 
-public class SpyEmailNotifier {
+public class SpyEmailNotifier implements EmailNotifier {
     private boolean called;
     private String email;
 
